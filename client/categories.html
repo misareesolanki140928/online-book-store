@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Book Categories | Online Book Store</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<body>
+<header class="site-header"><a class="menu-btn" href="home.html">☰</a><a class="brand" href="home.html">BOOK STORE</a><div class="header-actions"><a class="icon-link" href="cart.html">🛒 <span class="cart-count">0</span></a><a class="icon-link" href="home.html">♙</a></div></header>
+<main class="main"><div class="container">
+<h1 class="page-title">BOOK CATEGORIES</h1>
+<div class="catalog-layout">
+  <aside class="card category-list">
+    <h3>Categories</h3>
+    <a href="#" data-cat="Fiction">Fiction</a><a href="#" data-cat="Non-Fiction">Non-Fiction</a><a href="#" data-cat="Self Help">Self-Help</a><a href="#" data-cat="Business">Business</a><a href="#" data-cat="Technology">Technology</a><a href="#" data-cat="Children">Children</a><a href="#" data-cat="More">More</a>
+  </aside>
+  <section>
+    <div class="catalog-toolbar"><h2 id="categoryTitle">Fiction Books</h2><label style="margin:0">Sort By: <select id="sort" style="width:auto;padding:5px"><option>Latest</option><option>Price Low</option><option>Price High</option></select></label></div>
+    <div class="book-grid" id="catalogGrid"></div>
+  </section>
+</div>
+</div></main>
+<script src="../assets/js/app.js"></script>
+<script>
+let current="Fiction";
+function renderCatalog(){
+ let arr=BOOKS.filter(b=>b.category===current);
+ const sort=document.getElementById("sort").value;
+ if(sort==="Price Low")arr.sort((a,b)=>a.price-b.price);
+ if(sort==="Price High")arr.sort((a,b)=>b.price-a.price);
+ document.getElementById("categoryTitle").textContent=current+" Books";
+ document.getElementById("catalogGrid").innerHTML=arr.map(productCard).join("") || '<div class="notice">No books found in this category.</div>';
+}
+document.querySelectorAll("[data-cat]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();current=a.dataset.cat;renderCatalog()}));
+document.getElementById("sort").addEventListener("change",renderCatalog);
+renderCatalog();
+</script>
+</body></html>

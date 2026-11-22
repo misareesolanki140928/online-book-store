@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Admin Login | Online Book Store</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<body>
+<main class="main"><div class="container">
+<div class="page-title">ONLINE BOOK STORE</div><div class="page-subtitle">ADMIN SIDE • WIREFRAME 1</div>
+<div class="auth-wrap">
+<section class="card auth-card">
+<h1>ONLINE BOOK STORE</h1><h2>ADMIN LOGIN</h2>
+<form id="loginForm">
+<div class="form-group"><label>Username</label><input id="username" required placeholder="Enter Username"></div>
+<div class="form-group"><label>Password</label><input id="password" type="password" required placeholder="Enter Password"></div>
+<button class="btn primary" type="submit">LOGIN</button>
+</form>
+<div class="forgot"><a href="#" onclick="alert('Demo: contact the administrator to reset your password.');return false;">Forgot Password?</a></div>
+</section>
+</div>
+</div></main>
+<script>
+document.getElementById("loginForm").addEventListener("submit",e=>{e.preventDefault();location.href="dashboard.html"});
+</script>
+</body></html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Home | Online Book Store</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<body>
+<section class="bookhub-banner" aria-label="BookHub featured books"><img src="../assets/images/bookhub-banner.png" alt="BookHub banner: Find your next great read"></section>
+
+
+<header class="site-header">
+  <a class="menu-btn" href="home.html" aria-label="Home">☰</a>
+  <a class="brand" href="home.html">BOOK STORE</a>
+  <div class="header-actions">
+    <a class="icon-link" href="cart.html" title="Cart">🛒 <span class="cart-count">0</span></a>
+    <a class="icon-link" href="home.html" title="Account">♙</a>
+  </div>
+</header>
+
+<main class="main"><div class="container">
+  <h1 class="page-title">HOME</h1>
+  <section class="hero">
+    <div><h1>Discover Your Next Great Read</h1><p>Browse fiction, self-help, finance and business books.</p><div class="dots">• • •</div></div>
+  </section>
+  <section class="popular">
+    <h2>Popular Books</h2>
+    <div class="book-grid" id="popularGrid"></div>
+  </section>
+</div></main>
+<footer class="footer">© 2026 Online Book Store</footer>
+<script src="../assets/js/app.js"></script>
+<script>
+document.getElementById("popularGrid").innerHTML=BOOKS.slice(0,4).map(productCard).join("");
+</script>
+</body></html>

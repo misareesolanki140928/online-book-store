@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Manage Books | Online Book Store</title>
+<link rel="stylesheet" href="../assets/css/style.css"></head>
+<body>
+<div class="main">
+  <div class="container">
+    <div class="page-title">ONLINE BOOK STORE</div>
+    <div class="page-subtitle">MANAGE BOOKS</div>
+    <div class="admin-layout">
+      
+<aside class="sidebar">
+  <a class="" href="dashboard.html">⌂ Dashboard</a><a class="active" href="books.html">▣ Books</a><a class="" href="orders.html">▤ Orders</a><a class="" href="profile.html">♙ Customers</a><a class="" href="profile.html">□ Categories</a><a class="" href="dashboard.html">▥ Reports</a>
+  <a class="logout" href="login.html">↪ Logout</a>
+</aside>
+
+      <main>
+<section>
+<div class="content-head"><h2>Manage Books</h2><button class="btn primary small" onclick="alert('Demo: Add Book form opened.')">+ Add New Book</button></div>
+<div class="notice" id="bookNotice" style="display:none"></div>
+<div style="margin-bottom:10px"><input id="bookSearch" class="search" placeholder="Search books..."></div>
+<div class="table-wrap"><table id="booksTable"><thead><tr><th>Image</th><th>Book</th><th>Category</th><th>Price</th><th>Action</th></tr></thead><tbody></tbody></table></div>
+</section>
+<script>
+function renderAdminBooks(filter=''){
+ const list=BOOKS.filter(b=>b.title.toLowerCase().includes(filter.toLowerCase()));
+ document.querySelector("#booksTable tbody").innerHTML=list.map(b=>`<tr><td><img class="thumb-mini" src="../${b.image}" alt=""></td><td>${b.title}</td><td>${b.category}</td><td>₹${b.price}</td><td><div class="table-actions"><button class="btn small" onclick="alert('Edit: ${b.title}')">✎</button><button class="btn small danger" onclick="alert('Delete: ${b.title}')">▢</button></div></td></tr>`).join("");
+}
+document.getElementById("bookSearch").addEventListener("input",e=>renderAdminBooks(e.target.value));renderAdminBooks();
+</script>
+</main>
+    </div>
+  </div>
+</div>
+<script src="../assets/js/app.js"></script>
+</body></html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Checkout | Online Book Store</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<body>
+<header class="site-header"><a class="menu-btn" href="home.html">☰</a><a class="brand" href="home.html">BOOK STORE</a><div class="header-actions"><a class="icon-link" href="cart.html">🛒 <span class="cart-count">0</span></a><a class="icon-link" href="home.html">♙</a></div></header>
+<main class="main"><div class="container">
+<h1 class="page-title">CHECKOUT</h1>
+<div class="checkout-grid">
+<section class="card checkout-card">
+<h2>Delivery Details</h2>
+<form id="checkoutForm">
+<div class="form-group"><label>Full Name</label><input required placeholder="Enter Full Name"></div>
+<div class="form-group"><label>Address</label><input required placeholder="Enter Address"></div>
+<div class="form-group"><label>City</label><input required placeholder="Enter City"></div>
+<div class="row"><div class="form-group"><label>Pincode</label><input required pattern="[0-9]{6}" placeholder="Enter Pincode"></div><div class="form-group"><label>Phone</label><input required pattern="[0-9]{10}" placeholder="Enter Phone"></div></div>
+<label>Payment Method</label>
+<div class="payment-options"><label><input type="radio" name="payment" value="cod" checked> COD</label><label><input type="radio" name="payment" value="online"> Online Payment</label></div>
+<button class="btn primary" style="margin-top:12px" type="submit">Place Order</button>
+</form>
+</section>
+<section class="card checkout-card order-summary"><h2>Order Summary</h2><div id="summary"></div></section>
+</div></div></main>
+<script src="../assets/js/app.js"></script>
+<script>
+const items=cartDetails(), sub=items.reduce((s,x)=>s+x.total,0), shipping=40, total=sub+shipping;
+document.getElementById("summary").innerHTML=items.map(x=>`<div class="summary-item"><span>${x.title} × ${x.qty}</span><b>${money(x.total)}</b></div>`).join("")+
+`<div class="summary-item"><span>Shipping</span><b>${money(shipping)}</b></div><div class="summary-line total"><span>Total</span><span>${money(total)}</span></div>`;
+document.getElementById("checkoutForm").addEventListener("submit",e=>{
+ e.preventDefault(); if(!items.length){alert("Your cart is empty.");return;}
+ localStorage.removeItem("bookstoreCart");updateCartCount();alert("Order placed successfully!");location.href="home.html";
+});
+</script>
+</body></html>

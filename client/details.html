@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Book Details | Online Book Store</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<body>
+<header class="site-header"><a class="menu-btn" href="home.html">☰</a><a class="brand" href="home.html">BOOK STORE</a><div class="header-actions"><a class="icon-link" href="cart.html">🛒 <span class="cart-count">0</span></a><a class="icon-link" href="home.html">♙</a></div></header>
+<main class="main"><div class="container">
+<div style="font-size:11px;margin-bottom:12px">← <a href="categories.html">Back</a></div>
+<h1 class="page-title">BOOK DETAILS</h1>
+<div class="details-grid">
+  <div><img id="detailImage" class="book-cover-large" alt="Book cover"></div>
+  <div class="details">
+    <h1 id="detailTitle">The Alchemist</h1>
+    <div class="author">Author: <span id="detailAuthor"></span></div>
+    <div class="category">Category: <span id="detailCategory"></span></div>
+    <div class="rating">★★★★★ <span style="font-weight:400">(120 Reviews)</span></div>
+    <div class="big-price" id="detailPrice"></div>
+    <div class="stock">✓ In Stock</div>
+    <div class="qty-row">Qty: <input id="qty" type="number" min="1" value="1"><button class="btn primary" id="add">Add to Cart</button></div>
+  </div>
+</div>
+<div class="card description"><h3>Book Description</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. This sample description can be replaced with the final book description.</p></div>
+</div></main>
+<script src="../assets/js/app.js"></script>
+<script>
+const b=BOOKS[0];
+document.getElementById("detailImage").src="../"+b.image;
+document.getElementById("detailTitle").textContent=b.title;
+document.getElementById("detailAuthor").textContent=b.author;
+document.getElementById("detailCategory").textContent=b.category;
+document.getElementById("detailPrice").textContent=money(b.price);
+document.getElementById("add").onclick=()=>addToCart(b.id,Math.max(1,Number(document.getElementById("qty").value)));
+</script>
+</body></html>

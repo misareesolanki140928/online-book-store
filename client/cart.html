@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My Cart | Online Book Store</title><link rel="stylesheet" href="../assets/css/style.css"></head>
+<body>
+<header class="site-header"><a class="menu-btn" href="home.html">☰</a><a class="brand" href="home.html">BOOK STORE</a><div class="header-actions"><a class="icon-link" href="cart.html">🛒 <span class="cart-count">0</span></a><a class="icon-link" href="home.html">♙</a></div></header>
+<main class="main"><div class="container">
+<h1 class="page-title">MY CART</h1>
+<div id="cartArea"></div>
+</div></main>
+<script src="../assets/js/app.js"></script>
+<script>
+function renderCart(){
+ const items=cartDetails();
+ if(!items.length){document.getElementById("cartArea").innerHTML='<div class="notice">Your cart is empty. <a href="categories.html"><b>Browse books</b></a></div>';updateCartCount();return;}
+ let rows=items.map(x=>`<tr>
+ <td><div style="display:flex;align-items:center;gap:8px"><img class="thumb-mini" src="../${x.image}" alt=""><span>${x.title}</span></div></td>
+ <td>${money(x.price)}</td><td><input style="width:60px" type="number" min="1" value="${x.qty}" onchange="updateQty(${x.id},this.value)"></td>
+ <td>${money(x.total)}</td><td><button class="btn small danger" onclick="removeFromCart(${x.id})">Remove</button></td></tr>`).join("");
+ const subtotal=items.reduce((s,x)=>s+x.total,0), shipping=40, total=subtotal+shipping;
+ document.getElementById("cartArea").innerHTML=`
+ <div class="table-wrap"><table class="cart-table"><thead><tr><th>Book</th><th>Price</th><th>Qty</th><th>Total</th><th>Action</th></tr></thead><tbody>${rows}</tbody></table></div>
+ <div class="cart-summary"><div class="summary-line"><span>Subtotal</span><b>${money(subtotal)}</b></div><div class="summary-line"><span>Shipping</span><b>${money(shipping)}</b></div><div class="summary-line total"><span>Total</span><span>${money(total)}</span></div><a class="btn primary" style="display:block;text-align:center;margin-top:10px" href="checkout.html">Proceed to Checkout</a></div>`;
+ updateCartCount();
+}
+renderCart();
+</script>
+</body></html>

@@ -1,0 +1,11 @@
+ONLINE BOOK STORE — SUBMISSION CHECKLIST
+
+[ ] Source code folder (this project)
+[ ] 10-page wireframe PDF or image set (if required by instructor)
+[ ] Client-side screenshots captured from the running project
+[ ] Admin-side screenshots captured from the running project
+[ ] Project report with introduction, objectives, modules, tools, screenshots, testing and conclusion
+[ ] Actual GitHub repository link (only if uploaded)
+[ ] Check the instructor's CSE rubric for any additional required items
+
+NOTE: This is a front-end demo. It does not implement a real database, secure admin login or live payment gateway.
